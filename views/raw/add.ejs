@@ -1,0 +1,54 @@
+<% include ../layout/header %>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 m-auto">
+            <h1 class="display-5 text-center">Add Raw</h1>
+            <form action="/raw" method="POST">
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Material Name"
+                     name="rName"
+                     required
+                  />
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Dealer"
+                     name="dealer"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="number"
+                     class="form-control my-3"
+                     placeholder="Quantity"
+                     name="quantity"
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="number"
+                     class="form-control my-3"
+                     placeholder="Price"
+                     name="price"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="date"
+                     class="form-control my-3"
+                     placeholder="Expiry Date"
+                     name="expDate"
+                     required
+                  />
+               </div>
+               <input type="submit" class="btn btn-primary btn-block mt-4" />
+            </form>
+         </div>
+      </div>
+   </div>
+<% include ../layout/footer %>

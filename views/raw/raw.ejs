@@ -1,0 +1,41 @@
+<% include ../layout/header %>
+   <h1 class="text-center">
+      Raw Materials
+   </h1>
+   <div class="row">
+      <div class="col-md-9"></div>
+      <div class="col-md-3">
+         <a class="btn btn-lg btn-success" href="/raw/add">Add Raw Material</a>
+      </div>
+   </div>
+   <div class="container d-flex flex-wrap">
+      <% raws.forEach( (raw) => {%>
+         <div class="card bg-dark text-white m-4" style="width: 18rem;">
+            <div class="card-body">
+               <h5 class="card-title">
+                  <div class="row">
+                     <div class="col-md-10">
+                        <%= raw.rName %>
+                     </div>
+                     <div class="col-md-2">
+                        <form action="/raw/delete" method="post">
+                           <select name="rid" class="d-none">
+                              <option><%= raw._id %></option>
+                           </select>
+                           <button class="btn btn-sm btn-danger">X</button>
+                        </form>
+                     </div>
+                  </div>
+               </h5>
+               <ul class="list-group">
+                  <li class="list-group-item list-group-item-dark"><b>Dealer:</b> <%= raw.dealer %></li>
+                  <li class="list-group-item list-group-item-dark"><b>Warehouse:</b> <%= raw.warehouse %></li>
+                  <li class="list-group-item list-group-item-dark"><b>Quantity:</b> <%= raw.quantity %></li>
+                  <li class="list-group-item list-group-item-dark"><b>Price:</b> <%= raw.price %></li>
+                  <li class="list-group-item list-group-item-dark"><b>Expiry Date:</b> <%= raw.expDate %></li>
+               </ul>
+            </div>
+         </div>
+      <% }) %>
+   </div>
+<% include ../layout/footer %>

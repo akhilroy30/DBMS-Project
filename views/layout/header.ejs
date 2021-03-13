@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Home</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+   <style>
+      body{
+         background: steelblue;
+         min-height: 1000px;
+      }
+      .card{
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+   </style>
+</head>
+<body>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+      <div class="container">
+         <a class="navbar-brand" href="/">Factory Management</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <% if(Object.keys(current.customer).length){ %>
+               <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="/myproducts">My Products</a>
+                  </li>
+               </ul>
+               <div class="my-2 my-lg-0">
+                  <ul class="navbar-nav mr-auto">
+                     <li class="nav-item active">
+                        <span class="navbar-brand"><i><%=current.customer.fName%></i></span>
+                     </li>
+                     <li class="nav-item active">
+                        <a class="nav-link" href="/customer/logout">Logout</a>
+                     </li>
+                  </ul>
+               </div>
+            <% }else if(Object.keys(current.admin).length){ %>
+               <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="/worker">Workers</a>
+                  </li>
+                  <li class="nav-item active">
+                     <a class="nav-link" href="/warehouse">Warehouses</a>
+                  </li>
+                  <li class="nav-item active">
+                     <a class="nav-link" href="/machine">Machines</a>
+                  </li>
+                  <li class="nav-item active">
+                     <a class="nav-link" href="/raw">Raw Materials</a>
+                  </li>
+                  <li class="nav-item active">
+                     <a class="nav-link" href="/dealer">Dealers</a>
+                  </li>
+                  <li class="nav-item active">
+                     <a class="nav-link" href="/shipment">Shipment</a>
+                  </li>
+               </ul>   
+               <div class="my-2 my-lg-0">
+                  <ul class="navbar-nav mr-auto">
+                     <li class="nav-item active">
+                        <span class="navbar-brand"><i><%=current.admin.username%></i></span>
+                     </li>
+                     <li class="nav-item active">
+                        <a class="nav-link" href="/admin/logout">Logout</a>
+                     </li>
+                  </ul>
+               </div>
+            <% }else{ %>
+               <ul class="navbar-nav mr-auto">
+                  
+               </ul>
+               <div class="my-2 my-lg-0">
+                  <ul class="navbar-nav mr-auto">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="/customer/register">Customer Register</a>
+                     </li>
+                     <li class="nav-item active">
+                        <a class="nav-link" href="/customer/login">Customer Login</a>
+                     </li>
+                     <li class="nav-item active">
+                        <a class="nav-link" href="/admin/login">Admin Login</a>
+                     </li>
+                  </ul>
+               </div>
+            <% } %>
+         </div>
+      </div>
+   </nav>
+   <% if(current.error.length > 0){ %>
+      <div class="container">
+         <div class="alert alert-danger">
+            <%= current.error %>
+         </div>
+      </div>
+      <% current.error = '' %>
+   <% } %>
+   

@@ -1,0 +1,29 @@
+<% include ../layout/header %>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 m-auto">
+            <h1 class="display-5 text-center">Add Department</h1>
+            <form action="/worker/add-department" method="POST">
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Department Name"
+                     name="dName"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Purpose"
+                     name="purpose"
+                  />
+               </div>
+               <input type="submit" class="btn btn-primary btn-block mt-4" />
+            </form>
+         </div>
+      </div>
+   </div>
+<% include ../layout/footer %>

@@ -1,0 +1,36 @@
+<% include ../layout/header %>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 m-auto">
+            <h1 class="display-5 text-center">Add Dealer</h1>
+            <form action="/dealer" method="POST">
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Dealer Name"
+                     name="dName"
+                     required
+                  />
+                  <input
+                     type="Number"
+                     class="form-control my-3"
+                     placeholder="Phone Number"
+                     name="phone"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Location"
+                     name="location"
+                  />
+               </div>
+               <input type="submit" class="btn btn-primary btn-block mt-4" />
+            </form>
+         </div>
+      </div>
+   </div>
+<% include ../layout/footer %>

@@ -1,0 +1,62 @@
+<% include ../layout/header %>
+   <h1 class="text-center">
+      Warehouses
+   </h1>
+   <div class="row">
+      <div class="col-md-9"></div>
+      <div class="col-md-3">
+         <a class="btn btn-lg btn-success" href="/warehouse/add">Add Warehouse</a>
+      </div>
+   </div>
+   <div class="container d-flex flex-wrap">
+      <% warehouses.forEach( (warehouse) => {%>
+         <% if(current.admin.warehouseId == warehouse._id){ %>
+            <div class="card bg-primary text-white m-4" style="width: 18rem;">
+         <% }else{ %>
+            <div class="card bg-dark text-white m-4" style="width: 18rem;">
+         <% } %>
+            <div class="card-body">
+               <h5 class="card-title">
+                  <div class="row">
+                     <div class="col-md-10">
+                        <%= warehouse.wName %>
+                     </div>
+                     <div class="col-md-2">
+                        <form action="/warehouse/delete" method="post">
+                           <select name="wid" class="d-none">
+                              <option><%= warehouse._id %></option>
+                           </select>
+                           <button class="btn btn-sm btn-danger">X</button>
+                        </form>
+                     </div>
+                  </div>
+               </h5>
+               <ul class="list-group">
+                  <li class="list-group-item list-group-item-dark"><b>Size:</b> <%= warehouse.wSize %></li>
+                  <li class="list-group-item list-group-item-dark"><b>Area:</b> <%= warehouse.address %></li>
+                  <% if(warehouse.machines.length > 0){ %>
+                     <li class="list-group-item list-group-item-dark">
+                        <b>Machines:</b>
+                        <ul class="list-group mt-2">
+                           <% warehouse.machines.forEach( machine => { %>
+                              <li class="list-group-item list-group-item-dark"><%= machine %></li>
+                           <% }) %>   
+                        </ul>
+                     </li>
+                  <% } %>
+                  <% if(warehouse.raws.length > 0){ %>
+                     <li class="list-group-item list-group-item-dark">
+                        <b>Raws:</b>
+                        <ul class="list-group mt-2">
+                           <% warehouse.raws.forEach( raw => { %>
+                              <li class="list-group-item list-group-item-dark"><%= raw %></li>
+                           <% }) %>   
+                        </ul>
+                     </li>
+                  <% } %>
+               </ul>
+            </div>
+         </div>
+      <% }) %>
+   </div>
+<% include ../layout/footer %>

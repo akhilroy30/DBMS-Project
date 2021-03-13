@@ -1,0 +1,77 @@
+<% include layout/header %>
+   <div class="machineOpts d-none">
+      <% machines.forEach(machine => { %>
+         <option><%= machine.mName %> - Usage: <%= machine.usage %></option>
+      <% }) %>
+   </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 m-auto">
+            <h1 class="display-5 text-center">Add Product</h1>
+            <form action="/" method="POST">
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Product Name"
+                     name="pName"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="number"
+                     class="form-control my-3"
+                     placeholder="Price"
+                     name="price"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="number"
+                     class="form-control my-3"
+                     placeholder="Quantity"
+                     name="quantity"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <h6>Manufacture Date: </h6>
+                  <input
+                     type="date"
+                     class="form-control my-3"
+                     placeholder="Manufacture Date"
+                     name="mfDate"
+                     required
+                  />
+               </div>
+               
+               </select>
+               <div class="raw-select p-2">
+                  <div class="d-flex justify-content-between mb-3">
+                     <h4>Machines: </h4>
+                     <a class="btn btn-sm btn-primary" id="addMachine"><b>+</b></a>
+                  </div>
+                  <ul class="machineList list-group">
+                     
+                  </ul>
+               </div>
+               <input type="submit" class="btn btn-primary btn-block mt-4" />
+            </form>
+         </div>
+      </div>
+   </div>
+   <script>
+      var machineOpts = $('.machineOpts').html()
+      $('#addMachine').click(() => {
+         $('.machineList').append(`
+            <li class="list-group-item">
+               <select name='machines' class="custom-select">
+                  ${machineOpts}                  
+               </select>
+            </li>
+         `)
+      })
+   </script>
+<% include layout/footer %>

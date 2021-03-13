@@ -1,0 +1,61 @@
+<% include ../layout/header %>
+   <div class="d-none">
+      <ul>
+         <% raws.forEach(raw => { %>
+            <li class="raw"><%= raw.rName %> - Price: $<%= raw.price %>;</li>
+         <% }) %>
+      </ul>
+   </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 m-auto">
+            <h1 class="display-5 text-center">Add Machine</h1>
+            <form action="/machine" method="POST">
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Machine Name"
+                     name="mName"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Usage"
+                     name="usage"
+                  />
+               </div>
+               <div class="raw-select p-2">
+                  <div class="d-flex justify-content-between mb-3">
+                     <h4>Raws: </h4>
+                     <a class="btn btn-sm btn-primary" id="addRaw"><b>+</b></a>
+                  </div>
+                  <ul class="rawList list-group">
+                     
+                  </ul>
+               </div>
+               <input type="submit" class="btn btn-primary btn-block mt-4" />
+            </form>
+         </div>
+      </div>
+   </div>
+   <script>
+      var raws = $('.raw').text().split(';')
+      raws = raws.splice(0, raws.length-1)
+      var rawOptions = raws.map(raw => (
+         `<option>${raw}</option>`
+      ))
+      $('#addRaw').click(() => {
+         $('.rawList').append(`
+            <li class="list-group-item">
+               <select name='raws' class="custom-select">
+                  ${rawOptions}                  
+               </select>
+            </li>
+         `)
+      })
+   </script>
+<% include ../layout/footer %>

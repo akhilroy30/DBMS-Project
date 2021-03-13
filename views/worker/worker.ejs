@@ -1,0 +1,55 @@
+<% include ../layout/header %>
+   <h1 class="text-center">
+      Workers
+   </h1>
+   <div class="row">
+      <div class="col-md-9"></div>
+      <div class="col-md-3">
+         <a class="btn btn-lg btn-success" href="/worker/add">Add Worker</a>
+         <a class="btn btn-lg btn-success" href="/worker/add-department">Add Department</a>
+      </div>
+   </div>
+   <% depWorkers.forEach(depWorker => { %>
+      <div class="container">
+         <h2><%= depWorker.dName %></h2>
+         <% if(depWorker.workers.length == 0){ %>
+            <br>
+            <div class="mx-3">
+               No Workers in this Department
+            </div>
+         <% } %>
+      </div>
+      <% depWorker.workers.forEach( (worker) => {%>
+         <div class="container d-flex flex-wrap">
+            <div class="card bg-dark text-white m-4" style="width: 18rem;">
+               <div class="card-body">
+                  <h5 class="card-title">
+                     <div class="row">
+                        <div class="col-md-10">
+                           <%= worker.fName %> <%= worker.lName %>
+                        </div>
+                        <div class="col-md-2">
+                           <form action="/worker/delete" method="post">
+                              <select name="wid" class="d-none">
+                                 <option><%= worker._id %></option>
+                              </select>
+                              <button class="btn btn-sm btn-danger">X</button>
+                           </form>
+                        </div>
+                     </div>
+                  </h5>
+                  <ul class="list-group">
+                     <li class="list-group-item list-group-item-dark"><b>Email:</b> <%= worker.email %></li>
+                     <li class="list-group-item list-group-item-dark"><b>Phone No:</b> <%= worker.phone %></li>
+                     <li class="list-group-item list-group-item-dark"><b>Position:</b> <%= worker.position %></li>
+                     <li class="list-group-item list-group-item-dark"><b>Salary:</b> <%= worker.salary %></li>
+                     <li class="list-group-item list-group-item-dark"><b>Address:</b> <%= worker.address %></li>
+                     <li class="list-group-item list-group-item-dark"><b>Date of Birth:</b> <%= worker.dob %></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      <% }) %>
+      <br><br>
+   <% }) %>
+<% include ../layout/footer %>

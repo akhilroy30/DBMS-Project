@@ -1,0 +1,71 @@
+<% include ../layout/header %>
+   <div class="d-none">
+      <ul>
+         <% products.forEach(product => { %>
+            <li class="product"><%= product.pName %> - Price: $<%= product.price %>;</li>
+         <% }) %>
+      </ul>
+   </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 m-auto">
+            <h1 class="display-5 text-center">New Shipment</h1>
+            <form action="/shipment" method="POST">
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Shipment Name"
+                     name="sName"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Location"
+                     name="location"
+                  />
+               </div>
+               <div className="form-group">
+                  <h6>Manufacture Date: </h6>
+                  <input
+                     type="date"
+                     class="form-control my-3"
+                     placeholder="Shipment Date"
+                     name="date"
+                     required
+                  />
+               </div>
+               <div class="product-select p-2">
+                  <div class="d-flex justify-content-between mb-3">
+                     <h4>Products: </h4>
+                     <a class="btn btn-sm btn-primary" id="addproduct"><b>+</b></a>
+                  </div>
+                  <ul class="productList list-group">
+                     
+                  </ul>
+               </div>
+               <input type="submit" class="btn btn-primary btn-block mt-4" />
+            </form>
+         </div>
+      </div>
+   </div>
+   <script>
+      var products = $('.product').text().split(';')
+      products = products.splice(0, products.length-1)
+      var productOptions = products.map(product => (
+         `<option>${product}</option>`
+      ))
+      $('#addproduct').click(() => {
+         $('.productList').append(`
+            <li class="list-group-item">
+               <select name='products' class="custom-select">
+                  ${productOptions}                  
+               </select>
+            </li>
+         `)
+      })
+   </script>
+<% include ../layout/footer %>

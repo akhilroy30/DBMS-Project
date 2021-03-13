@@ -1,0 +1,39 @@
+<% include ../layout/header %>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 m-auto">
+            <h1 class="display-5 text-center">Add Warehouse</h1>
+            <form action="/warehouse" method="POST">
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Warehouse Name"
+                     name="wName"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Address"
+                     name="address"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="Number"
+                     class="form-control my-3"
+                     placeholder="Size"
+                     name="wSize"
+                     required
+                  />
+               </div>
+               <input type="submit" class="btn btn-primary btn-block mt-4" />
+            </form>
+         </div>
+      </div>
+   </div>
+<% include ../layout/footer %>

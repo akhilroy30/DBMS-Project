@@ -1,0 +1,84 @@
+<% include ../layout/header %>
+
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 m-auto">
+            <h1 class="display-5 text-center">Customer Register</h1>
+            <form action="/customer/register" method="POST">
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="First Name"
+                     name="fName"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Middle Name"
+                     name="mName"
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Last Name"
+                     name="lName"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="date"
+                     class="form-control my-3"
+                     placeholder="Date Of Birth"
+                     name="dob"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Address"
+                     name="address"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="Number"
+                     class="form-control my-3"
+                     placeholder="Phone No:"
+                     name="phone"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="text"
+                     class="form-control my-3"
+                     placeholder="Email"
+                     name="email"
+                     required
+                  />
+               </div>
+               <div className="form-group">
+                  <input
+                     type="password"
+                     class="form-control my-3"
+                     placeholder="Password"
+                     name="password"
+                     required
+                  />
+               </div>
+               <input type="submit" class="btn btn-primary btn-block mt-4" />
+            </form>
+         </div>
+      </div>
+   </div>
+<% include ../layout/footer %>
